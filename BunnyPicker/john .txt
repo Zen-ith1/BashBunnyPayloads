@@ -1,0 +1,85 @@
+john 
+
+
+Yes, you can install John the Ripper on a Bash Bunny device, but it's essential to understand that the Bash Bunny runs a variant of Linux known as "BBQLinux," which is a minimalistic Linux distribution designed for use with the Bash Bunny. To install software on the Bash Bunny, you'll need to use a package manager compatible with BBQLinux, such as opkg.
+
+Here are the general steps to install John the Ripper on a Bash Bunny:
+
+1. **Connect to the Bash Bunny:** Plug the Bash Bunny into your computer, wait for it to boot, and then access it via SSH. The default SSH username and password for the Bash Bunny are usually "root" and "toor."
+
+   ```shell
+   ssh root@172.16.64.1
+   ```
+
+   If the IP address is different, adjust it accordingly.
+
+2. **Update the Package Repository:** Before installing any software, it's a good practice to update the package repository to get the latest package information.
+
+   ```shell
+   opkg update
+   ```
+
+3. **Install Dependencies:** John the Ripper may have some dependencies that need to be installed. You may need to use `opkg` to install these dependencies. For example:
+
+   ```shell
+   opkg install build-essential
+   opkg install libssl-dev
+   ```
+
+   This step ensures you have the necessary tools and libraries for building and running John the Ripper.
+
+4. **Download and Compile John the Ripper:** You can download the source code for John the Ripper directly from the official website (https://www.openwall.com/john/). After downloading, transfer the source code to your Bash Bunny (you can use SCP or any other method you prefer). Once it's on the Bash Bunny, you can compile and install it:
+
+   ```shell
+   tar xvzf john-1.9.0.tar.gz  # Replace with the actual filename
+   cd john-1.9.0
+   ./configure && make && make install
+   ```
+
+   Make sure to adjust the version number in the commands above to match the version you downloaded.
+
+5. **Configure John the Ripper:** You may need to configure John the Ripper according to your specific needs. This might include setting up wordlists, rules, and other options.
+
+6. **Run John the Ripper:** You can now use John the Ripper to crack passwords or perform other tasks as needed.
+
+Please note that the specific steps may vary depending on the version of BBQLinux and the Bash Bunny firmware you are using. Ensure that you have the necessary permissions and legal rights to use John the Ripper or any other password cracking tools, as using such tools without authorization may be illegal in some jurisdictions. Always use them responsibly and ethically.
+
+
+## Requirements
+
+Responder must be in /tools/responder/
+(Can be otained from https://forums.hak5.org/topic/40971-info-tools/)
+JtR must be in /tools/john
+Requires initial setup (below)
+
+## Initial Setup
+Install responder from https://forums.hak5.org/topic/40971-info-tools/
+
+Replace /etc/apt/sources.list with:
+deb http://archive.debian.org/debian/ jessie main non-free contrib
+deb-src http://archive.debian.org/debian/ jessie main non-free contrib
+deb http://archive.debian.org/debian-security/ jessie/updates main non-free contrib
+deb-src http://archive.debian.org/debian-security/ jessie/updates main non-free contrib
+
+apt update (DO NOT RUN apt upgrade as it will break RNDIS_ETHERNET. Not entirely clear why.)
+
+The john package included can't handle NTLM hashes so we will make our own. 
+Install gcc and git if you don't have them.
+
+apt-get install gcc
+
+apt-get install git
+git config --global http.sslverify "false" (this is insecure but I'm not worried)
+
+git clone https://github.com/openwall/john
+
+cd john
+./configure && make
+mv run /tools/john
+cd ..
+rm -r john (not required but a space saving measure)
+
+
+## STATUS
+
+

